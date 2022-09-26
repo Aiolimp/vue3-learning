@@ -3,8 +3,8 @@
   <h2>姓名:{{ name }}</h2>
   <h2>年龄:{{ age }}</h2>
   <h2>薪资:{{ salary }}K</h2>
-  <button @click="name = name + '~'">修改姓名</button>
   <button @click="age++">增长年龄</button>
+  <button @click="name = name + '~'">修改姓名</button>
   <button @click="salary++">增长薪资</button>
 </template>
 

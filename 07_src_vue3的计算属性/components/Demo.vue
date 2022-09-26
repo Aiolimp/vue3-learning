@@ -21,8 +21,8 @@ export default {
   // },
   setup(){
     let person = reactive({
-      firstName: 'pan',
-      lastName: 'yue',
+      firstName: '张',
+      lastName: '三',
       age: 21,
     });
 
