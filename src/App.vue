@@ -1,19 +1,38 @@
 <template>
   <!--vue3的组件模版结构可以没有根标签-->
-  <Demo>
-  </Demo>
+  <input type="text" v-model="keyWord" />
+  <h3>{{ keyWord }}</h3>
 </template>
 
 <script>
-import Demo from "./components/Demo";
+import { customRef } from "vue";
 export default {
-  name: 'App',
-  components: {Demo},
-  setup(){
-    return {
+  name: "App",
+  setup() {
+    function myRef(value) {
+      let timer;
+      return customRef((track, trigger) => {
+        return {
+          get() {
+            track();
+            return value;
+          },
+          set(newValue) {
+            clearTimeout(timer)
+            timer = setTimeout(() => {
+              value = newValue;
+              trigger();
+            }, 500);
+          },
+        };
+      });
     }
-  }
-}
+    let keyWord = myRef("111");
+    return {
+      keyWord,
+    };
+  },
+};
 </script>
 
 <style>
